@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+NAME="Nautilus File Manager"
+MARKER="nautilus"
+
+echo "Trying to install $NAME"
+
+if [ ! -f ~/.idempotent/$MARKER ]; then
+    sudo apt-get install -y \
+        nautilus \
+    && gsettings set org.gnome.desktop.background show-desktop-icons false \
+    && gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view' \
+    && date > ~/.idempotent/$MARKER \
+    && echo "Finished installing $NAME"
+else
+    echo "$NAME is already installed"
+fi
