@@ -13,6 +13,7 @@ export JETBRAINS_TOOLBOX_VERSION="1.6.2914"
 export JIRACLIENT_VERSION="3_8_4"
 export NVM_VERSION="0.33.6"
 export ANDROID_STUDIO_URL=https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/android-studio-ide-171.4443003-linux.zip
+export GOLANG_VERSION="1.9.2"
 
 
 # DO NOT REMOVE THIS IS REQUIRED
