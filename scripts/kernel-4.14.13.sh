@@ -13,7 +13,7 @@ IMAGE_AMD64="linux-image-4.14.13-041413-generic_4.14.13-041413.201801101001_amd6
 echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    && sudo mkdir -p /tmp/kernel-update \
+    sudo mkdir -p /tmp/kernel-update \
     && curl -L "$BASE_URL$HEADERS_ALL" -o /tmp/kernel-update/$HEADERS_ALL \
     && curl -L "$BASE_URL$HEADERS_AMD64" -o /tmp/kernel-update/$HEADERS_AMD64 \
     && curl -L "$BASE_URL$IMAGE_AMD64" -o /tmp/kernel-update/$IMAGE_AMD64 \
