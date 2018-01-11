@@ -6,7 +6,7 @@ NAME="Lock on Suspend (XPS 9560)"
 MARKER="xps9560-lock"
 
 echo "Trying to install $NAME"
-if [ ! -f ~/.idempotent/$MARKER ]; then
+if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     echo "[Unit]
 Description=Lock·on Suspend
 Before=sleep.target
@@ -21,7 +21,7 @@ ExecStartPost=/bin/sleep 1
 [Install]
 WantedBy=suspend.target" | sudo tee /etc/systemd/system/suspend@$USER.service
     sudo systemctl enable suspend@$USER.service \
-    && date > ~/.idempotent/$MARKER \
+    && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
     echo "$NAME is already installed"

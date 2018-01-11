@@ -7,12 +7,12 @@ MARKER="nautilus"
 
 echo "Trying to install $NAME"
 
-if [ ! -f ~/.idempotent/$MARKER ]; then
+if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
         nautilus \
     && gsettings set org.gnome.desktop.background show-desktop-icons false \
     && gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view' \
-    && date > ~/.idempotent/$MARKER \
+    && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
     echo "$NAME is already installed"

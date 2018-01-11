@@ -7,7 +7,7 @@ MARKER="zsh"
 
 echo "Trying to install $NAME"
 
-if [ ! -f ~/.idempotent/$MARKER ]; then
+if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y  zsh \
     && if [ ! -d ~/.oh-my-zsh ]; then git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh; fi \
     && git clone https://github.com/powerline/fonts.git --depth=1 /tmp/powerline \
@@ -15,7 +15,7 @@ if [ ! -f ~/.idempotent/$MARKER ]; then
     && rm -rf /tmp/powerline \
     && git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k \
     && chsh -s /bin/zsh \
-    && date > ~/.idempotent/zsh \
+    && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
     echo "$NAME is already installed"
