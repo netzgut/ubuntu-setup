@@ -23,6 +23,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && code --install-extension robinbentley.sass-indented \
     && code --install-extension robertohuertasm.vscode-icons \
     && code --install-extension Shan.code-settings-sync \
+    && code --install-extension patrys.vscode-code-outline \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
