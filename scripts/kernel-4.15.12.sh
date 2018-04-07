@@ -2,7 +2,7 @@
 
 set -e
 
-NAME="Kernel (4.15.11)"
+NAME="Kernel (4.15.12)"
 MARKER="kernel-4.15.12"
 
 BASE_URL="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15.12/"
