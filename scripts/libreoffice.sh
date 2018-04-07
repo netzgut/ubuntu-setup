@@ -9,7 +9,7 @@ echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get purge -y libreoffice* \
-    && sudo add-apt-repository ppa:libreoffice/libreoffice-5-4 \
+    && sudo add-apt-repository ppa:libreoffice/ppa \
     && sudo apt-get update \
     && sudo apt-get install -y libreoffice  \
     && date > $MARKER_DIRECTORY/$MARKER \
