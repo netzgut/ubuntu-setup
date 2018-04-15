@@ -2,8 +2,16 @@
 
 set -e
 
+###############################################################################
+# Visual Studio Code Editor
+###############################################################################
+# URL: https://code.visualstudio.com/
+###############################################################################
+
 NAME="Visual Studio Code"
 MARKER="vscode"
+
+###############################################################################
 
 echo "Trying to install $NAME"
 
@@ -18,4 +26,3 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
 else
     echo "$NAME is already installed"
 fi
-

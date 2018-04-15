@@ -1,4 +1,4 @@
-# Idempotent Ubuntu Setup
+# Idempotent Ubuntu Setup for 16.04 / amd64
 
 A collection of idempotent shell scripts for easy setting up a dev machine. The scripts fullfil our needs, YMMV.
 
@@ -10,6 +10,9 @@ All scripts use marker files to check if they already ran, so they should only r
 
 ## How to use it
 
-See `setup-example.sh` for how to use it. Just add the scripts you want to run.
+See `setup-example.sh` for how to use it. Just add the scripts you want to run. You can override default settings,
+see a script for the available/needed environment variables.
 
+## License
+MIT. See LICENSE.
 

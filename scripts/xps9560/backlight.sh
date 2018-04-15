@@ -2,10 +2,19 @@
 
 set -e
 
+###############################################################################
+# Enable Backlight Support for XPS 9560
+###############################################################################
+# URL: https://wiki.archlinux.org/index.php/Dell_XPS_15_9560
+###############################################################################
+
 NAME="Backlight (XPS 9560)"
 MARKER="xps9560-backlight"
 
+###############################################################################
+
 echo "Trying to install $NAME"
+
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     echo "Section \"Device\"
 	Identifier \"card0\"

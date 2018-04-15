@@ -2,12 +2,21 @@
 
 set -e
 
+###############################################################################
+# Auto Lock on Suspend XPS 9560 with i3lock
+###############################################################################
+# URL: https://wiki.archlinux.org/index.php/Dell_XPS_15_9560
+###############################################################################
+
 NAME="Lock on Suspend (XPS 9560)"
 MARKER="xps9560-lock"
 
+###############################################################################
+
 echo "Trying to install $NAME"
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    echo "[Unit]
+    sudo apt-get install -y i3lock \
+    && echo "[Unit]
 Description=Lock·on Suspend
 Before=sleep.target
  

@@ -2,8 +2,24 @@
 
 set -e
 
-NAME="ZSH/oh-my-zsh/powerlevel9k"
+###############################################################################
+# ZSH Shell with Oh My ZSH and Powerline font
+###############################################################################
+# URL: http://ohmyz.sh/
+###############################################################################
+
+NAME="ZSH with Oh My ZSH"
 MARKER="zsh"
+
+###############################################################################
+
+# THEME_DIR
+[ -n "${THEME_DIR}" ] && THEME_DIR="powerlevel9k"
+
+# THEME_GIT
+[ -n "${THEME_GIT}" ] && THEME_GIT="https://github.com/bhilburn/powerlevel9k.git"
+
+###############################################################################
 
 echo "Trying to install $NAME"
 
@@ -13,7 +29,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && git clone https://github.com/powerline/fonts.git --depth=1 /tmp/powerline \
     && bash /tmp/powerline/install.sh \
     && rm -rf /tmp/powerline \
-    && git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k \
+    && git clone $THEME_GIT $HOME/.oh-my-zsh/custom/themes/$THEME_DIR \
     && chsh -s /bin/zsh \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"

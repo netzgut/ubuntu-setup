@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
-# See: https://github.com/butteff/Ubuntu-Telemetry-Free-Privacy-Secure/blob/master/ubuntu_secure.sh
 set -e
+
+###############################################################################
+# Improving Ubuntu Privacy
+###############################################################################
+# URL: https://github.com/butteff/Ubuntu-Telemetry-Free-Privacy-Secure/blob/master/ubuntu_secure.sh
+###############################################################################
 
 NAME="Improve Privacy"
 MARKER="improve-privacy"
+
+###############################################################################
 
 echo "Trying to install $NAME"
 
