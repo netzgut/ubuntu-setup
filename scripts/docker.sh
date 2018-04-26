@@ -14,7 +14,7 @@ MARKER="docker"
 ###############################################################################
 
 # DOCKER_COMPOSE_VERSION
-[ -n "${DOCKER_COMPOSE_VERSION}" ] && DOCKER_COMPOSE_VERSION="1.20.1"
+[ -n "${DOCKER_COMPOSE_VERSION}" ] && DOCKER_COMPOSE_VERSION="1.21.1"
 
 ###############################################################################
 
