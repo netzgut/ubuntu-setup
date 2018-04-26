@@ -30,7 +30,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         android-tools-adb \
     && curl -L $ANDROID_STUDIO_URL -o /tmp/as.zip \
     && sudo unzip /tmp/as.zip -d /opt \
-    && ln -s /opt/android-studio/bin/studio.sh $BIN_DIR/studio \
+    && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
