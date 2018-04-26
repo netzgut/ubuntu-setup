@@ -4,7 +4,7 @@
 set -e
 
 # LOCATION OF THE MARKER FILES
-export MARKER_DIRECTROY="$HOME/.idempotent"
+export MARKER_DIRECTORY="$HOME/.idempotent"
 
 # BIN DIRECTORY
 export BIN_DIRECTORY="$HOME/bin"
