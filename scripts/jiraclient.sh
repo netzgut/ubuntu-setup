@@ -14,7 +14,7 @@ MARKER="jiraclient"
 ###############################################################################
 
 # JIRACLIENT_VERSION
-[ -n "${JIRACLIENT_VERSION}" ] && JIRACLIENT_VERSION="3_8_4"
+[ -z "${JIRACLIENT_VERSION}" ] && JIRACLIENT_VERSION="3_8_4"
 
 ###############################################################################
 

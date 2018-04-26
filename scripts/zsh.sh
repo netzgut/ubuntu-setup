@@ -14,10 +14,10 @@ MARKER="zsh"
 ###############################################################################
 
 # THEME_DIR
-[ -n "${THEME_DIR}" ] && THEME_DIR="powerlevel9k"
+[ -z "${THEME_DIR}" ] && THEME_DIR="powerlevel9k"
 
 # THEME_GIT
-[ -n "${THEME_GIT}" ] && THEME_GIT="https://github.com/bhilburn/powerlevel9k.git"
+[ -z "${THEME_GIT}" ] && THEME_GIT="https://github.com/bhilburn/powerlevel9k.git"
 
 ###############################################################################
 
