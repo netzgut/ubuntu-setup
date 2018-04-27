@@ -16,7 +16,8 @@ MARKER="xps9560-backlight"
 echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    echo "Section \"Device\"
+    sudo apt-get install -y --no-install-recommends xbacklight \
+    && echo "Section \"Device\"
 	Identifier \"card0\"
 	Driver \"intel\"
 	Option \"Backlight\" \"intel_backlight\"
