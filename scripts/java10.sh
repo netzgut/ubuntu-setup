@@ -20,7 +20,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && echo oracle-java10-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections \
     && sudo apt-get update \
     && sudo apt-get install -y --no-install-recommends \
-        oracle-java10-installer
+        oracle-java10-installer \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished install $NAME"
 else
