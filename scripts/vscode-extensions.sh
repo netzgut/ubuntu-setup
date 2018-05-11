@@ -23,7 +23,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && code --install-extension dbaeumer.vscode-eslint \
     && code --install-extension donjayamanne.githistory \
     && code --install-extension flowtype.flow-for-vscode \
-    && code --install-extension lukehoban.Go \
+    && code --install-extension ms-vscode.go \
     && code --install-extension msjsdiag.debugger-for-chrome \
     && code --install-extension robertohuertasm.vscode-icons \
     && code --install-extension robinbentley.sass-indented \
