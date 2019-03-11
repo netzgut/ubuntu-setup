@@ -3,7 +3,7 @@
 set -e
 
 ###############################################################################
-# Android Studio 3.1
+# Android Studio 3.3.2
 ###############################################################################
 # URL: https://developer.android.com/studio/index.html#downloads
 ###############################################################################
@@ -14,7 +14,7 @@ MARKER="android-studio"
 ###############################################################################
 
 # ANDROID_STUDIO_URL
-[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/3.1.4.0/android-studio-ide-173.4907809-linux.zip"
+[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/3.3.2.0/android-studio-ide-182.5314842-linux.zip"
 
 ###############################################################################
 
