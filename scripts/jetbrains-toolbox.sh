@@ -14,7 +14,7 @@ MARKER="jetbrains-toolbox"
 ###############################################################################
 
 # JETBRAINS_TOOLBOX_VERSION
-[ -z "${JETBRAINS_TOOLBOX_VERSION}" ] && JETBRAINS_TOOLBOX_VERSION="1.11.4231"
+[ -z "${JETBRAINS_TOOLBOX_VERSION}" ] && JETBRAINS_TOOLBOX_VERSION="1.13.4801"
 
 ###############################################################################
 
