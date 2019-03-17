@@ -17,12 +17,14 @@ echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     code --install-extension 2gua.rainbow-brackets \
-    && code --install-extension PeterJausovec.vscode-docker \
+    && code --install-extension alefragnani.Bookmarks \
     && code --install-extension Zignd.html-css-class-completion \
-    && code --install-extension dbaeumer.vscode-eslint \
+    && code --install-extension esbenp.prettier-vscode \
     && code --install-extension donjayamanne.githistory \
+    && code --install-extension eamodio.gitlens \
     && code --install-extension flowtype.flow-for-vscode \
-    && code --install-extension ms-vscode.go \
+    && code --install-extension dbaeumer.vscode-eslint \
+    && code --install-extension ms-vscode.Go \
     && code --install-extension msjsdiag.debugger-for-chrome \
     && code --install-extension robertohuertasm.vscode-icons \
     && code --install-extension robinbentley.sass-indented \
