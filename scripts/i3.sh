@@ -25,6 +25,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         i3status \
         i3lock \
         unity-greeter-badges \
+        rofi \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
