@@ -17,6 +17,8 @@ echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y --no-install-recommends \
+        gcc \
+        build-essentials \
         cmake \
         cmake-data \
         libcairo2-dev \
@@ -27,6 +29,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         libxcb-randr0-dev \
         libxcb-util0-dev \
         libxcb-xkb-dev \
+        libxcb-composite0-dev \
         pkg-config \
         python-xcbgen \
         xcb-proto \
@@ -41,7 +44,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && cd /tmp/polybar \
     && git checkout "3.3.0" \
     && ./build.sh \
-s    && date > $MARKER_DIRECTORY/$MARKER \
+    && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
     echo "$NAME is already installed"
