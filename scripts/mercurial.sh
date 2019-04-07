@@ -21,7 +21,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         python-keyring \
         python-pip \
     && mkdir -p ~/.hgext \
-    && curl -L https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v0.9.8.2.tar.bz2 -o - | tar -xj -C ~/.hgext/ \
+    && curl -L https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v0.9.8.3.tar.bz2 -o - | tar -xj -C ~/.hgext/ \
     && curl -L -o ~/.hgext/mercurial_keyring.py http://bitbucket.org/Mekk/mercurial_keyring/raw/default/mercurial_keyring.py \
     && pip install mercurial_extension_utils \
     && date > $MARKER_DIRECTORY/$MARKER \
