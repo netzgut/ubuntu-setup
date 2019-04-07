@@ -42,7 +42,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         libpulse-dev \
     && git clone https://github.com/jaagr/polybar.git /tmp/polybar \
     && cd /tmp/polybar \
-    && git checkout "3.3.0" \
+    && git checkout "3.3.1" \
     && ./build.sh \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
