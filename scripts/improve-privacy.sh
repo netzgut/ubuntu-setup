@@ -20,6 +20,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         unity-lens-shopping \
         unity-webapps-common \
         apturl \
+        popularity-contest \
         zeitgeist \
         zeitgeist-datahub \
         zeitgeist-core \
