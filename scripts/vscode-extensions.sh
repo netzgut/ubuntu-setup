@@ -18,6 +18,7 @@ echo "Trying to install $NAME"
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     code --install-extension 2gua.rainbow-brackets \
     && code --install-extension alefragnani.Bookmarks \
+    && code --install-extension cospaia.clojure4vscode \
     && code --install-extension dbaeumer.vscode-eslint \
     && code --install-extension donjayamanne.githistory \
     && code --install-extension dracula-theme.theme-dracula
