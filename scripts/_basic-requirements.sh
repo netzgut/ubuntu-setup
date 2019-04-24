@@ -13,7 +13,8 @@ sudo apt-get update \
 && sudo apt-get install -y --no-install-recommends \
     software-properties-common \
     wget \
-    curl
+    curl \
+    nnn
 
 echo "Setting up needed directories"
 
