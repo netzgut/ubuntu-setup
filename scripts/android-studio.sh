@@ -14,7 +14,7 @@ MARKER="android-studio"
 ###############################################################################
 
 # ANDROID_STUDIO_URL
-[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/3.3.2.0/android-studio-ide-182.5314842-linux.zip"
+[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/3.4.0.18/android-studio-ide-183.5452501-linux.tar.gz"
 
 ###############################################################################
 
@@ -28,8 +28,8 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         lib32z1 \
         libbz2-1.0:i386 \
         android-tools-adb \
-    && curl -L $ANDROID_STUDIO_URL -o /tmp/as.zip \
-    && sudo unzip /tmp/as.zip -d /opt \
+    && curl -L $ANDROID_STUDIO_URL -o /tmp/as.tar.gz \
+    && sudo tar -C /opt -xzf /tmp/as.tar.gz \
     && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
