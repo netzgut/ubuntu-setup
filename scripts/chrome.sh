@@ -16,10 +16,11 @@ MARKER="chrome"
 echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -o /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && (sudo dpkg -i /tmp/chrome.deb || true) \
+    CHROME_TEMP_FILE="$(mktemp -u).deb"
+    curl -o $CHROME_TEMP_FILE https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && (sudo dpkg -i $CHROME_TEMP_FILE || true) \
     && sudo apt-get -y -f install \
-    && rm /tmp/chrome.deb \
+    && rm $CHROME_TEMP_FILE \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else

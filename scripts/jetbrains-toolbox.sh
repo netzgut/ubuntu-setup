@@ -18,11 +18,14 @@ MARKER="jetbrains-toolbox"
 
 ###############################################################################
 
+TOOLBOX_TEMP_FILE="$(mktemp -u).tar.gz"
+
 echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -L https://download.jetbrains.com/toolbox/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}.tar.gz -o /tmp/jbtb.tar.gz \
-    && sudo tar xvfz /tmp/jbtb.tar.gz -C /opt/ \
+    curl -L https://download.jetbrains.com/toolbox/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}.tar.gz -o $TOOLBOX_TEMP_FILE \
+    && sudo tar xfz $TOOLBOX_TEMP_FILE -C /opt/ \
+    && rm $TOOLBOX_TEMP_FILE \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else

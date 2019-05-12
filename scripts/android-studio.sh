@@ -18,6 +18,8 @@ MARKER="android-studio"
 
 ###############################################################################
 
+AS_TEMP_FILE="$(mktemp -u).tar.gz"
+
 echo "Trying to install $NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
@@ -28,8 +30,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         lib32z1 \
         libbz2-1.0:i386 \
         android-tools-adb \
-    && curl -L $ANDROID_STUDIO_URL -o /tmp/as.tar.gz \
-    && sudo tar -C /opt -xzf /tmp/as.tar.gz \
+    && curl -L $ANDROID_STUDIO_URL -o $AS_TEMP_FILE \
+    && sudo tar -C /opt -xzf $AS_TEMP_FILE \
+    && rm $AS_TEMP_FILE \
     && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"

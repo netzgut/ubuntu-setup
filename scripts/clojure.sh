@@ -20,14 +20,14 @@ MARKER="clojure"
 
 CLOJURE_URL=https://download.clojure.org/install/linux-install-${CLOJURE_VERSION}.sh
 LEININUNG_URL=https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-
-TMP_FILE=/tmp/clojure_${CLOJURE_VERSION}.sh
+CLOJURE_TEMP_FILE="$(mktemp -u).sh"
 
 echo "Trying to install $NAME"
+
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -L ${CLOJURE_URL} -o $TMP_FILE \
-    && sudo bash $TMP_FILE \
-    && rm $TMP_FILE \
+    curl -L ${CLOJURE_URL} -o $CLOJURE_TEMP_FILE \
+    && sudo bash $CLOJURE_TEMP_FILE \
+    && rm $CLOJURE_TEMP_FILE \
     && curl -L ${LEININUNG_URL} -o $BIN_DIRECTORY/lein \
     && chmod a+x $BIN_DIRECTORY/lein \
     && $BIN_DIRECTORY/lein
