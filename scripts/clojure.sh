@@ -14,7 +14,7 @@ MARKER="clojure"
 ###############################################################################
 
 # CLOJURE_VERSION
-[ -z "${CLOJURE_VERSION}" ] && CLOJURE_VERSION="1.10.0.442"
+[ -z "${CLOJURE_VERSION}" ] && CLOJURE_VERSION="1.10.1.446"
 
 ###############################################################################
 
@@ -30,7 +30,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm $CLOJURE_TEMP_FILE \
     && curl -L ${LEININUNG_URL} -o $BIN_DIRECTORY/lein \
     && chmod a+x $BIN_DIRECTORY/lein \
-    && $BIN_DIRECTORY/lein
+    && $BIN_DIRECTORY/lein \
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
