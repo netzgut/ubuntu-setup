@@ -26,8 +26,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz -o $GO_TEMP_FILE \
     && sudo tar -C /usr/local -xzf $GO_TEMP_FILE \
     && rm $GO_TEMP_FILE \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${GOLANG_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${GOLANG_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

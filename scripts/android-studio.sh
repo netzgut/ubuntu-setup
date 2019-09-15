@@ -14,7 +14,8 @@ MARKER="android-studio"
 ###############################################################################
 
 # ANDROID_STUDIO_URL
-[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz"
+[ -z "${ANDROID_STUDIO_VERSION}" ] && ANDROID_STUDIO_VERSION="3.5.0.21"
+[ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/${ANDROID_STUDIO_VERSION}/android-studio-ide-191.5791312-linux.tar.gz"
 
 ###############################################################################
 
@@ -34,8 +35,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo tar -C /opt -xzf $AS_TEMP_FILE \
     && rm $AS_TEMP_FILE \
     && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${ANDROID_STUDIO_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${ANDROID_STUDIO_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

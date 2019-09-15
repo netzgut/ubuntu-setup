@@ -31,8 +31,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && curl -L ${LEININUNG_URL} -o $BIN_DIRECTORY/lein \
     && chmod a+x $BIN_DIRECTORY/lein \
     && $BIN_DIRECTORY/lein \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${CLOJURE_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${CLOJURE_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

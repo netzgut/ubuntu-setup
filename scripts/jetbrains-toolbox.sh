@@ -26,8 +26,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L https://download.jetbrains.com/toolbox/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}.tar.gz -o $TOOLBOX_TEMP_FILE \
     && sudo tar xfz $TOOLBOX_TEMP_FILE -C /opt/ \
     && rm $TOOLBOX_TEMP_FILE \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${JETBRAINS_TOOLBOX_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${JETBRAINS_TOOLBOX_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

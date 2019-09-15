@@ -24,5 +24,6 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && date > $MARKER_DIRECTORY/$MARKER \
     && echo "Finished installing $NAME"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

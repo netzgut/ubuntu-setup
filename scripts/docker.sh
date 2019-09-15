@@ -35,9 +35,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     \
     && sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
     && sudo chmod +x /usr/local/bin/docker-compose \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\nDocker-Compose: ${DOCKER_COMPOSE_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (Docker Compose: ${DOCKER_COMPOSE_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi
-

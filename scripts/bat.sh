@@ -27,8 +27,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L $BAT_URL -o $BAT_TEMP_FILE \
     && sudo dpkg -i $BAT_TEMP_FILE \
     && rm $BAT_TEMP_FILE \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${BAT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME ($BAT_VERSION)"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

@@ -37,8 +37,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm $GODOT_TEMP_FILE \
     && mkdir -p $HOME/bin \
     && ln -s ${GODOT_PATH}/${GODOT_NAME}/${GODOT_EXEC} $BIN_DIRECTORY/godot \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${GODOT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${GODOT_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi

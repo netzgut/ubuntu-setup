@@ -28,8 +28,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm $JIRACLIENT_TEMP_FILE \
     && mkdir -p $HOME/bin \
     && ln -s /opt/jiraclient-${JIRACLIENT_VERSION}/bin/jiraclient.sh $HOME/bin/jiraclient \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && echo "$(date)\n${JIRACLIENT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
+    && echo "Finished installing $NAME (${JIRACLIENT_VERSION})"
 else
-    echo "$NAME is already installed"
+    echo "$NAME is already installed:" \
+    && cat $MARKER_DIRECTORY/$MARKER
 fi
