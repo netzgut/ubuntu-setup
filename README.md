@@ -14,11 +14,9 @@ Most scripts don't clean up if they fail so idempotency isn't guaranteed.
 
 See `setup-example.sh` for how to use it.
 Just add the scripts you want the the variable `SCRIPTS`.
+The name of the script is its filename without its extension.
 You can override default settings, see a script for the available/needed environment variables.
 
-## Adding scripts
-
-The variable `MARKER` _MUST_ be the filename without extension, or the installation check will fail.
 
 ## License
 MIT. See LICENSE.
