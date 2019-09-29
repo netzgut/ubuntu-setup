@@ -13,18 +13,22 @@ MARKER="git"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+GITFLOW_URL="https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh"
+GITFLOW_TEMP_FILE="$(mktemp -u).sh"
+
+###############################################################################
+
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y --no-install-recommends \
         git \
         tig \
         meld \
-    && wget --no-check-certificate -q  https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh \
-    && sudo bash gitflow-installer.sh install stable \
-    && rm gitflow-installer.sh \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && curl -L ${GITFLOW_URL} -o ${GITFLOW_TEMP_FILE} \
+    && sudo ${GITFLOW_TEMP_FILE} install stable \
+    && rm ${GITFLOW_TEMP_FILE} \
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

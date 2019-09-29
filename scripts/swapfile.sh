@@ -22,7 +22,7 @@ NEW_SWAP_SIZE_MB=`echo "($RAM_SIZE_GB + sqrt($RAM_SIZE_GB)) * 1024" | bc`
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "NEW_SWAP_SIZE_MB=$NEW_SWAP_SIZE_MB"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo swapoff /swapfile \
@@ -31,8 +31,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo chmod 600 /swapfile \
     && sudo mkswap /swapfile \
     && sudo swapon /swapfile \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER "NEW_SWAP_SIZE_MB=$NEW_SWAP_SIZE_MB"
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

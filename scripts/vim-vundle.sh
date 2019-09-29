@@ -3,23 +3,22 @@
 set -e
 
 ###############################################################################
-# Vim - the ubiquitous text editor
+# Vim Vundle Plugin system
 ###############################################################################
-# URL: https://www.vim.org/
-###############################################################################
-
-NAME="Vim"
-MARKER="vim"
-
+# URL: https://github.com/VundleVim/Vundle.vim
 ###############################################################################
 
-echo "Trying to install $NAME"
+NAME="Vim Vundle"
+MARKER="vim-vundle"
+
+###############################################################################
+
+print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
+
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    sudo apt-get install -y --no-install-recommends vim \
-    && mkdir -p ~/.vim/bundle/ \
+    mkdir -p ~/.vim/bundle/ \
     && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

@@ -13,7 +13,7 @@ MARKER="chrome"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     CHROME_TEMP_FILE="$(mktemp -u).deb"
@@ -22,7 +22,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo apt-get -y -f install \
     && rm $CHROME_TEMP_FILE \
     && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

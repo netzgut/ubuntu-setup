@@ -8,20 +8,19 @@ set -e
 # URL: https://gitlab.gnome.org/GNOME/nautilus
 ###############################################################################
 
-NAME="Nautilus File Manager"
+NAME="Nautilus File Manager (with i3 fix)"
 MARKER="nautilus"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
         nautilus \
     && gsettings set org.gnome.desktop.background show-desktop-icons false \
     && gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view' \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

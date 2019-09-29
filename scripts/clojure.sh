@@ -22,7 +22,9 @@ CLOJURE_URL=https://download.clojure.org/install/linux-install-${CLOJURE_VERSION
 LEININUNG_URL=https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 CLOJURE_TEMP_FILE="$(mktemp -u).sh"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "CLOJURE_VERSION=$CLOJURE_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L ${CLOJURE_URL} -o $CLOJURE_TEMP_FILE \
@@ -31,9 +33,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && curl -L ${LEININUNG_URL} -o $BIN_DIRECTORY/lein \
     && chmod a+x $BIN_DIRECTORY/lein \
     && $BIN_DIRECTORY/lein \
-    && echo "$(date)\n${CLOJURE_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (${CLOJURE_VERSION})"
+    && finish_install $MARKER "CLOJURE_VERSION=$CLOJURE_VERSION"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

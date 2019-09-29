@@ -18,7 +18,7 @@ MARKER="rcm"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "DOTFILES_REPO=$DOTFILES_REPO"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo add-apt-repository -y ppa:martin-frost/thoughtbot-rcm \
@@ -26,8 +26,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo apt-get install -y rcm \
     && git clone $DOTFILES_REPO $HOME/.dotfiles \
     && rcup \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished install $NAME"
+    && finish_install $MARKER "DOTFILES_REPO=$DOTFILES_REPO"
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

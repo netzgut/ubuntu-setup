@@ -13,7 +13,11 @@ MARKER="polybar"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+[ -z "${POLYBAR_VERSION}" ] && POLYBAR_VERSION="3.3.1"
+
+###############################################################################
+
+print_banner "$NAME" "POLYBAR_VERSION=$POLYBAR_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y --no-install-recommends \
@@ -42,10 +46,9 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         libpulse-dev \
     && git clone https://github.com/jaagr/polybar.git /tmp/polybar \
     && cd /tmp/polybar \
-    && git checkout "3.3.1" \
+    && git checkout "$POLYBAR_VERSION" \
     && ./build.sh \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER "POLYBAR_VERSION=$POLYBAR_VERSION"
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

@@ -13,7 +13,7 @@ MARKER="vscode"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
@@ -21,8 +21,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
     && sudo apt-get update \
     && sudo apt-get install -y code \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

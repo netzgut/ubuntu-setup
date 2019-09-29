@@ -24,7 +24,9 @@ GODOT_EXEC="Godot_v${GODOT_VERSION}-stable_mono_x11.64"
 GODOT_MONO_URL=https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/mono/${GODOT_NAME}.zip
 GODOT_TEMP_FILE="$(mktemp -u).zip"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "GODOT_VERSION=$GODOT_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt install gnupg ca-certificates \
@@ -37,8 +39,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm $GODOT_TEMP_FILE \
     && mkdir -p $HOME/bin \
     && ln -s ${GODOT_PATH}/${GODOT_NAME}/${GODOT_EXEC} $BIN_DIRECTORY/godot \
-    && echo "$(date)\n${GODOT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (${GODOT_VERSION})"
+    && finish_install $MARKER "$NAME" "GODOT_VERSION=$GODOT_VERSION"
 else
     echo "$NAME is already installed:" \
     && cat $MARKER_DIRECTORY/$MARKER

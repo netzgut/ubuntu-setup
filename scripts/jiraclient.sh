@@ -20,7 +20,9 @@ MARKER="jiraclient"
 
 JIRACLIENT_TEMP_FILE="$(mktemp -u).tar.gz"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "JIRACLIENT_VERSION=$JIRACLIENT_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L http://d1.almworks.com/.files/jiraclient-${JIRACLIENT_VERSION}_without_jre.tar.gz -o $JIRACLIENT_TEMP_FILE \
@@ -28,9 +30,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm $JIRACLIENT_TEMP_FILE \
     && mkdir -p $HOME/bin \
     && ln -s /opt/jiraclient-${JIRACLIENT_VERSION}/bin/jiraclient.sh $HOME/bin/jiraclient \
-    && echo "$(date)\n${JIRACLIENT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (${JIRACLIENT_VERSION})"
+    && finish_install $MARKER "JIRACLIENT_VERSION=${JIRACLIENT_VERSION}"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

@@ -13,7 +13,7 @@ MARKER="improve-privacy"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get -y purge \
@@ -27,8 +27,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         zeitgeist-extension-fts \
         unity8* \
     && sudo apt-get -y autoremove \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

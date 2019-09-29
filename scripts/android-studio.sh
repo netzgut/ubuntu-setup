@@ -22,7 +22,9 @@ MARKER="android-studio"
 
 AS_TEMP_FILE="$(mktemp -u).tar.gz"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "ANDROID_STUDIO_VERSION=$ANDROID_STUDIO_VERSION" "ANDROID_STUDIO_BUILD=$ANDROID_STUDIO_BUILD"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
@@ -36,9 +38,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && sudo tar -C /opt -xzf $AS_TEMP_FILE \
     && rm $AS_TEMP_FILE \
     && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
-    && echo "$(date)\n${ANDROID_STUDIO_VERSION}-${ANDROID_STUDIO_BUILD}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (${ANDROID_STUDIO_VERSION}-${ANDROID_STUDIO_BUILD})"
+    && finish_install $MARKER "ANDROID_STUDIO_VERSION=$ANDROID_STUDIO_VERSION" "ANDROID_STUDIO_BUILD=$ANDROID_STUDIO_BUILD"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

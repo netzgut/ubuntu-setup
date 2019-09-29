@@ -8,12 +8,12 @@ set -e
 # URL: https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa
 ###############################################################################
 
-NAME="OpenJDK 11"
+NAME="OpenJDK 11 (+openjfx)"
 MARKER="openjdk11"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo add-apt-repository ppa:openjdk-r/ppa \
@@ -24,8 +24,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         openjdk-11-source \
         openjfx \
         openjfx-source \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished install $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

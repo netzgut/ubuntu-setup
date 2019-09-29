@@ -20,15 +20,15 @@ MARKER="golang"
 
 GO_TEMP_FILE="$(mktemp -u).tar.gz"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz -o $GO_TEMP_FILE \
     && sudo tar -C /usr/local -xzf $GO_TEMP_FILE \
     && rm $GO_TEMP_FILE \
-    && echo "$(date)\n${GOLANG_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (${GOLANG_VERSION})"
+    && finish_install $MARKER "GOLANG_VERSION=$GOLANG_VERSION"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

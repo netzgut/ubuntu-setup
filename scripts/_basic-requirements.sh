@@ -14,7 +14,7 @@ sudo apt-get update \
     software-properties-common \
     wget \
     curl \
-    nnn
+    git
 
 echo "Setting up needed directories"
 

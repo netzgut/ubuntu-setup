@@ -25,7 +25,7 @@ MARKER="watchman"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "WATCHMAN_VERSION=$WATCHMAN_VERSION" "INOTIFY_MAX_USER_WATCHES=$INOTIFY_MAX_USER_WATCHES" "INOTIFY_MAX_QUEUED_EVENTS=$INOTIFY_MAX_QUEUED_EVENTS" "INOTIFY_MAX_USER_INSTANCES=$INOTIFY_MAX_USER_INSTANCES"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y autoconf automake build-essential python-dev libssl-dev libtool \
@@ -41,8 +41,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && echo $INOTIFY_MAX_USER_INSTANCES | sudo tee  -a /proc/sys/fs/inotify/max_user_instances \
     && watchman  shutdown-server \
     && sudo rm -rf /tmp/watchman \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER "WATCHMAN_VERSION=$WATCHMAN_VERSION" "INOTIFY_MAX_USER_WATCHES=$INOTIFY_MAX_USER_WATCHES" "INOTIFY_MAX_QUEUED_EVENTS=$INOTIFY_MAX_QUEUED_EVENTS" "INOTIFY_MAX_USER_INSTANCES=$INOTIFY_MAX_USER_INSTANCES"
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

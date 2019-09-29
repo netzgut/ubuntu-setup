@@ -15,15 +15,15 @@ MARKER="gitkraken"
 
 GITKRAKEN_TEMP_FILE="$(mktemp -u).deb"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o $GITKRAKEN_TEMP_FILE \
     && sudo dpkg -i $GITKRAKEN_TEMP_FILE \
     && rm $GITKRAKEN_TEMP_FILE \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

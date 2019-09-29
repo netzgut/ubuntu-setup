@@ -8,7 +8,7 @@ set -e
 # URL: https://github.com/sharkdp/bat
 ###############################################################################
 
-NAME="Bat, a cat replacement"
+NAME="Bat - a cat(1) clone with wings"
 MARKER="bat"
 
 ###############################################################################
@@ -21,15 +21,15 @@ MARKER="bat"
 BAT_URL=https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb
 BAT_TEMP_FILE="$(mktemp -u).deb"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME" "VERSION=$BAT_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     curl -L $BAT_URL -o $BAT_TEMP_FILE \
     && sudo dpkg -i $BAT_TEMP_FILE \
     && rm $BAT_TEMP_FILE \
-    && echo "$(date)\n${BAT_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME ($BAT_VERSION)"
+    && finish_install $MARKER "BAT_VERSION=${BAT_VERSION}"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

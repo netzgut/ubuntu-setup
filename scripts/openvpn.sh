@@ -13,7 +13,7 @@ MARKER="openvpn"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
@@ -21,9 +21,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         network-manager \
         network-manager-openvpn \
         network-manager-openvpn-gnome \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi
-

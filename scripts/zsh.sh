@@ -21,7 +21,7 @@ MARKER="zsh"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "THEME_DIR=$THEME_DIR" "THEME_GIT=$THEME_GIT"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y  zsh \
@@ -31,8 +31,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && rm -rf /tmp/powerline \
     && git clone $THEME_GIT $HOME/.oh-my-zsh/custom/themes/$THEME_DIR \
     && chsh -s /bin/zsh \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER "GOLANG_VERSION=$GOLANG_VERSION"
 else
-    echo "$NAME is already installed"
+    already_installed "THEME_DIR=$THEME_DIR" "THEME_GIT=$THEME_GIT"
 fi

@@ -3,20 +3,20 @@
 set -e
 
 ###############################################################################
-# rustup.rs - The Rust toolchain installer
+# Vim - the ubiquitous text editor
 ###############################################################################
-# URL: https://github.com/creationix/nvm
+# URL: https://www.vim.org/
 ###############################################################################
 
-NAME="rustup.rs (rustup)"
-MARKER=rustup
+NAME="Vim"
+MARKER="vim"
 
 ###############################################################################
 
 print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl https://sh.rustup.rs -sSf | sh -s -- -y \
+    sudo apt-get install -y --no-install-recommends vim \
     && finish_install $MARKER
 else
     already_installed $MARKER

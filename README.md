@@ -2,8 +2,7 @@
 
 A collection of (more or less) idempotent shell scripts for easy setting up a dev machine.
 Theses scripts fulfill our needs, YMMV.
-
-NO WARRANTIES GIVEN! IF YOU BRICK YOUR MACHINE THERE'S ONLY YOU TO BLAME!
+They come with no warranties attached.
 
 ## Idempotency
 
@@ -13,8 +12,13 @@ Most scripts don't clean up if they fail so idempotency isn't guaranteed.
 
 ## How to use it
 
-See `setup-example.sh` for how to use it. Just add the scripts you want to run. You can override default settings,
-see a script for the available/needed environment variables.
+See `setup-example.sh` for how to use it.
+Just add the scripts you want the the variable `SCRIPTS`.
+You can override default settings, see a script for the available/needed environment variables.
+
+## Adding scripts
+
+The variable `MARKER` _MUST_ be the filename without extension, or the installation check will fail.
 
 ## License
 MIT. See LICENSE.

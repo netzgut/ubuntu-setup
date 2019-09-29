@@ -11,15 +11,12 @@ MARKER="reboot-shutdown-fix"
 
 ###############################################################################
 
-###############################################################################
-
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo chmod 700 /sbin/reboot \
     && sudo chmod 700 /sbin/shutdown \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

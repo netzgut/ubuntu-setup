@@ -15,7 +15,9 @@ MARKER="i3wm"
 
 KEY_TEMP_FILE="$(mktemp -u).deb"
 
-echo "Trying to install $NAME"
+###############################################################################
+
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2019.02.01_all.deb $KEY_TEMP_FILE SHA256:176af52de1a976f103f9809920d80d02411ac5e763f695327de9fa6aff23f416 \
@@ -29,9 +31,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         i3lock \
         unity-greeter-badges \
         rofi \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi
-

@@ -18,7 +18,7 @@ MARKER="docker"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "DOCKER_COMPOSE_VERSION=$DOCKER_COMPOSE_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get remove -y docker docker-engine docker.io \
@@ -35,9 +35,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     \
     && sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
     && sudo chmod +x /usr/local/bin/docker-compose \
-    && echo "$(date)\nDocker-Compose: ${DOCKER_COMPOSE_VERSION}\n" > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME (Docker Compose: ${DOCKER_COMPOSE_VERSION})"
+    && finish_install $MARKER "DOCKER_COMPOSE_VERSION=${DOCKER_COMPOSE_VERSION}"
 else
-    echo "$NAME is already installed:" \
-    && cat $MARKER_DIRECTORY/$MARKER
+    already_installed $MARKER
 fi

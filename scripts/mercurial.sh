@@ -13,7 +13,7 @@ MARKER="mercurial"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
@@ -24,8 +24,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && curl -L https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v0.9.8.3.tar.bz2 -o - | tar -xj -C ~/.hgext/ \
     && curl -L -o ~/.hgext/mercurial_keyring.py http://bitbucket.org/Mekk/mercurial_keyring/raw/default/mercurial_keyring.py \
     && pip install mercurial_extension_utils \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi
