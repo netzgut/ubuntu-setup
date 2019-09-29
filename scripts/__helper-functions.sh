@@ -90,7 +90,7 @@ function check_status {
 
     read -r -p "Do you want to proceed? [Y/n]" response
     response=${response,,} # tolower
-    if [ $response -eq "n" ]; then
+    if [[ $response == "n" ]]; then
         exit 0
     fi
 }
