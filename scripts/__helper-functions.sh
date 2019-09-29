@@ -37,7 +37,7 @@ function finish_install {
             printf "${!i}\n" >> $MARKER_FILE
         done
     fi
-    printf "\n${BOLD}Installation finished${NC}\n"
+    printf "\n${BOLD}Installation finished - ${1$}{NC}\n"
 }
 
 function check_status {
@@ -83,7 +83,7 @@ function check_status {
     printf "\n"
 
     if [ -z "${NOT_INSTALLED}" ]; then
-        printf "\nNothing to do here...\n"
+        printf "\nNreothing to do here...\n"
         exit 0
     fi
 
