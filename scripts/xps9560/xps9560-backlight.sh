@@ -2,6 +2,8 @@
 
 set -e
 
+MARKER=$(basename "${BASH_SOURCE%.*}")
+
 ###############################################################################
 # Enable Backlight Support for XPS 9560
 ###############################################################################
@@ -9,11 +11,10 @@ set -e
 ###############################################################################
 
 NAME="Backlight (XPS 9560)"
-MARKER="xps9560-backlight"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y --no-install-recommends xbacklight \
@@ -22,9 +23,8 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
 	Driver \"intel\"
 	Option \"Backlight\" \"intel_backlight\"
 	BusID \"PCI:0:2:0\"
-EndSection" | sudo tee /usr/share/X11/xorg.conf.d/20-intel.conf
-    date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+EndSection" | sudo tee /usr/share/X11/xorg.conf.d/20-intel.conf \
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi

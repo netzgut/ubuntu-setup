@@ -2,6 +2,8 @@
 
 set -e
 
+MARKER=$(basename "${BASH_SOURCE%.*}")
+
 ###############################################################################
 # Auto Lock on Suspend XPS 9560 with i3lock
 ###############################################################################
@@ -9,11 +11,11 @@ set -e
 ###############################################################################
 
 NAME="Lock on Suspend (XPS 9560)"
-MARKER="xps9560-lock"
 
 ###############################################################################
 
-echo "Trying to install $NAME"
+print_banner "$NAME"
+
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y i3lock \
     && echo "[Unit]
@@ -30,8 +32,7 @@ ExecStartPost=/bin/sleep 1
 [Install]
 WantedBy=suspend.target" | sudo tee /etc/systemd/system/suspend@$USER.service
     sudo systemctl enable suspend@$USER.service \
-    && date > $MARKER_DIRECTORY/$MARKER \
-    && echo "Finished installing $NAME"
+    && finish_install $MARKER
 else
-    echo "$NAME is already installed"
+    already_installed $MARKER
 fi
