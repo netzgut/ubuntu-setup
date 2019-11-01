@@ -37,7 +37,7 @@ function finish_install {
             printf "${!i}\n" >> $MARKER_FILE
         done
     fi
-    printf "\n${BOLD}Installation finished - ${1$}{NC}\n"
+    printf "\n${BOLD}Installation finished - ${1}{NC}\n"
 }
 
 function check_status {
