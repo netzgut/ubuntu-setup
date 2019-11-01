@@ -27,7 +27,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         tig \
         meld \
     && curl -L ${GITFLOW_URL} -o ${GITFLOW_TEMP_FILE} \
-    && sudo ${GITFLOW_TEMP_FILE} install stable \
+    && sudo bash ${GITFLOW_TEMP_FILE} install stable \
     && rm ${GITFLOW_TEMP_FILE} \
     && finish_install $MARKER
 else
