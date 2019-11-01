@@ -14,7 +14,7 @@ NAME="Mercurial"
 
 ###############################################################################
 
-print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
+print_banner "$NAME"
 
 if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     sudo apt-get install -y \
