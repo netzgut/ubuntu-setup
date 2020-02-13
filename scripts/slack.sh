@@ -29,6 +29,7 @@ print_banner "$NAME"
 if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     curl -L $SLACK_URL -o "$SLACK_TEMP_FILE" \
     && sudo dpkg -i "$SLACK_TEMP_FILE" \
+    && sudo apt -y --fix-broken install \
     && rm "$SLACK_TEMP_FILE" \
     && finish_install "$MARKER"
 else
