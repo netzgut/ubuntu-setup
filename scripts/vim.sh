@@ -16,9 +16,9 @@ NAME="Vim"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo apt-get install -y --no-install-recommends vim \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

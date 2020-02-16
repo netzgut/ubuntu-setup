@@ -25,11 +25,11 @@ GO_TEMP_FILE="$(mktemp -u).tar.gz"
 
 print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz -o $GO_TEMP_FILE \
-    && sudo tar -C /usr/local -xzf $GO_TEMP_FILE \
-    && rm $GO_TEMP_FILE \
-    && finish_install $MARKER "GOLANG_VERSION=$GOLANG_VERSION"
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
+    curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz -o "$GO_TEMP_FILE" \
+    && sudo tar -C /usr/local -xzf "$GO_TEMP_FILE" \
+    && rm "$GO_TEMP_FILE" \
+    && finish_install "$MARKER" "GOLANG_VERSION=$GOLANG_VERSION"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

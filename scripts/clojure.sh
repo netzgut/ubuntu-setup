@@ -27,14 +27,14 @@ CLOJURE_TEMP_FILE="$(mktemp -u).sh"
 
 print_banner "$NAME" "CLOJURE_VERSION=$CLOJURE_VERSION"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -L ${CLOJURE_URL} -o $CLOJURE_TEMP_FILE \
-    && sudo bash $CLOJURE_TEMP_FILE \
-    && rm $CLOJURE_TEMP_FILE \
-    && curl -L ${LEININUNG_URL} -o $BIN_DIRECTORY/lein \
-    && chmod a+x $BIN_DIRECTORY/lein \
-    && $BIN_DIRECTORY/lein \
-    && finish_install $MARKER "CLOJURE_VERSION=$CLOJURE_VERSION"
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
+    curl -L $CLOJURE_URL -o "$CLOJURE_TEMP_FILE" \
+    && sudo bash "$CLOJURE_TEMP_FILE" \
+    && rm "$CLOJURE_TEMP_FILE" \
+    && curl -L $LEININUNG_URL -o "$BIN_DIRECTORY"/lein \
+    && chmod a+x "$BIN_DIRECTORY"/lein \
+    && "$BIN_DIRECTORY"/lein \
+    && finish_install "$MARKER" "CLOJURE_VERSION=$CLOJURE_VERSION"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

@@ -16,7 +16,7 @@ NAME="Mercurial"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo apt-get install -y \
         mercurial \
         python-keyring \
@@ -25,7 +25,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && curl -L https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v0.9.8.3.tar.bz2 -o - | tar -xj -C ~/.hgext/ \
     && curl -L -o ~/.hgext/mercurial_keyring.py http://bitbucket.org/Mekk/mercurial_keyring/raw/default/mercurial_keyring.py \
     && pip install mercurial_extension_utils \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

@@ -16,9 +16,9 @@ NAME="rustup.rs (rustup)"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     curl https://sh.rustup.rs -sSf | sh -s -- -y \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

@@ -16,12 +16,12 @@ NAME="Yarn Package Manager"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY/""$MARKER" ]; then
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
     && sudo apt-get update \
     && sudo apt-get install --no-install-recommends yarn \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

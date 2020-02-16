@@ -20,11 +20,11 @@ GITKRAKEN_TEMP_FILE="$(mktemp -u).deb"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
-    curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o $GITKRAKEN_TEMP_FILE \
-    && sudo dpkg -i $GITKRAKEN_TEMP_FILE \
-    && rm $GITKRAKEN_TEMP_FILE \
-    && finish_install $MARKER
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
+    curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o "$GITKRAKEN_TEMP_FILE" \
+    && sudo dpkg -i "$GITKRAKEN_TEMP_FILE" \
+    && rm "$GITKRAKEN_TEMP_FILE" \
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

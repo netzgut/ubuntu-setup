@@ -21,13 +21,13 @@ NAME="RCM"
 
 print_banner "$NAME" "DOTFILES_REPO=$DOTFILES_REPO"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo add-apt-repository -y ppa:martin-frost/thoughtbot-rcm \
     && sudo apt-get update \
     && sudo apt-get install -y rcm \
-    && git clone $DOTFILES_REPO $HOME/.dotfiles \
+    && git clone "$DOTFILES_REPO" "$HOME"/.dotfiles \
     && rcup \
-    && finish_install $MARKER "DOTFILES_REPO=$DOTFILES_REPO"
+    && finish_install "$MARKER" "DOTFILES_REPO=$DOTFILES_REPO"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

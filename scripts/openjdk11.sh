@@ -16,7 +16,7 @@ NAME="OpenJDK 11 (+openjfx)"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo add-apt-repository ppa:openjdk-r/ppa \
     && sudo apt-get update \
     && sudo apt-get install -y --no-install-recommends \
@@ -25,7 +25,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         openjdk-11-source \
         openjfx \
         openjfx-source \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

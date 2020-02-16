@@ -14,12 +14,12 @@ NAME="Vim Vundle"
 
 ###############################################################################
 
-print_banner "$NAME" "GOLANG_VERSION=$GOLANG_VERSION"
+print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     mkdir -p ~/.vim/bundle/ \
     && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

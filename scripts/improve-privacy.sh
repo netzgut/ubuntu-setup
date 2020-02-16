@@ -16,7 +16,7 @@ NAME="Improve Privacy"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo apt-get -y purge \
         unity-lens-shopping \
         unity-webapps-common \
@@ -28,7 +28,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         zeitgeist-extension-fts \
         unity8* \
     && sudo apt-get -y autoremove \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

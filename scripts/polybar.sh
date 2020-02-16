@@ -14,13 +14,13 @@ NAME="Polybar"
 
 ###############################################################################
 
-[ -z "${POLYBAR_VERSION}" ] && POLYBAR_VERSION="3.4.2"
+[ -z "$POLYBAR_VERSION" ] && POLYBAR_VERSION="3.4.2"
 
 ###############################################################################
 
 print_banner "$NAME" "POLYBAR_VERSION=$POLYBAR_VERSION"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo apt-get install -y --no-install-recommends \
         gcc \
         build-essentials \
@@ -49,7 +49,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && cd /tmp/polybar \
     && git checkout "$POLYBAR_VERSION" \
     && ./build.sh \
-    && finish_install $MARKER "POLYBAR_VERSION=$POLYBAR_VERSION"
+    && finish_install "$MARKER" "POLYBAR_VERSION=$POLYBAR_VERSION"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

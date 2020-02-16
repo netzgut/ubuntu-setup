@@ -16,7 +16,7 @@ NAME="Visual Studio Code Extensions"
 
 print_banner "$NAME"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     code --install-extension 2gua.rainbow-brackets \
     && code --install-extension alefragnani.Bookmarks \
     && code --install-extension betterthantomorrow.calva \
@@ -31,7 +31,7 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
     && code --install-extension rust-lang.rust \
     && code --install-extension vscode-icons-team.vscode-icons \
     && code --install-extension Zignd.html-css-class-completion \
-    && finish_install $MARKER
+    && finish_install "$MARKER"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi

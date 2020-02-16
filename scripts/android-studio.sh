@@ -27,7 +27,7 @@ AS_TEMP_FILE="$(mktemp -u).tar.gz"
 
 print_banner "$NAME" "ANDROID_STUDIO_VERSION=$ANDROID_STUDIO_VERSION" "ANDROID_STUDIO_BUILD=$ANDROID_STUDIO_BUILD"
 
-if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
+if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     sudo apt-get install -y \
         libc6:i386 \
         libncurses5:i386 \
@@ -35,11 +35,11 @@ if [ ! -f $MARKER_DIRECTORY/$MARKER ]; then
         lib32z1 \
         libbz2-1.0:i386 \
         android-tools-adb \
-    && curl -L $ANDROID_STUDIO_URL -o $AS_TEMP_FILE \
-    && sudo tar -C /opt -xzf $AS_TEMP_FILE \
-    && rm $AS_TEMP_FILE \
-    && ln -s /opt/android-studio/bin/studio.sh $BIN_DIRECTORY/studio \
-    && finish_install $MARKER "ANDROID_STUDIO_VERSION=$ANDROID_STUDIO_VERSION" "ANDROID_STUDIO_BUILD=$ANDROID_STUDIO_BUILD"
+    && curl -L $ANDROID_STUDIO_URL -o "$AS_TEMP_FILE" \
+    && sudo tar -C /opt -xzf "$AS_TEMP_FILE" \
+    && rm "$AS_TEMP_FILE" \
+    && ln -s /opt/android-studio/bin/studio.sh "$BIN_DIRECTORY"/studio \
+    && finish_install "$MARKER" "ANDROID_STUDIO_VERSION=$ANDROID_STUDIO_VERSION" "ANDROID_STUDIO_BUILD=$ANDROID_STUDIO_BUILD"
 else
-    already_installed $MARKER
+    already_installed "$MARKER"
 fi
