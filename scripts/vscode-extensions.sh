@@ -17,7 +17,7 @@ NAME="Visual Studio Code Extensions"
 print_banner "$NAME"
 
 if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
-    code --install-extension 2gua.rainbow-brackets \
+    code --install-extension coenraads.bracket-pair-colorizer-2 \
     && code --install-extension alefragnani.Bookmarks \
     && code --install-extension betterthantomorrow.calva \
     && code --install-extension dbaeumer.vscode-eslint \
