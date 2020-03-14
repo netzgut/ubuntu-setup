@@ -15,12 +15,12 @@ NAME="Android Studio"
 ###############################################################################
 
 # ANDROID_STUDIO_URL
-[ -z "${ANDROID_STUDIO_VERSION}" ] && ANDROID_STUDIO_VERSION="3.5.3.0"
-[ -z "${ANDROID_STUDIO_BUILD}" ] && ANDROID_STUDIO_BUILD="191.6010548"
+[ -z "${ANDROID_STUDIO_VERSION}" ] && ANDROID_STUDIO_VERSION="3.6.1.0"
+[ -z "${ANDROID_STUDIO_BUILD}" ] && ANDROID_STUDIO_BUILD="192.6241897"
 [ -z "${ANDROID_STUDIO_URL}" ] && ANDROID_STUDIO_URL="https://dl.google.com/dl/android/studio/ide-zips/${ANDROID_STUDIO_VERSION}/android-studio-ide-${ANDROID_STUDIO_BUILD}-linux.tar.gz"
 
 ###############################################################################
-
+https://dl.google.com/dl/android/studio/ide-zips/3.6.1.0/android-studio-ide-192.6241897-linux.tar.gz
 AS_TEMP_FILE="$(mktemp -u).tar.gz"
 
 ###############################################################################
