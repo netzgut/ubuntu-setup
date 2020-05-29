@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 function print_error {
-    printf "${RED}${1}${NC}\n"
+    printf "%s%s%s\n" "${RED}" "${1}" "${NC}"
 }
 
 # $1 = NAME
@@ -16,28 +16,28 @@ function print_error {
 # $n = additional parameters
 function print_banner {
     printf "\n\n"
-    printf "${BOLD}[${NC}${DIM}Installing ${NC}${BOLD}${1}]${NC}"
+    printf "%s[%sInstalling %s]%s" "${BOLD}" "${NC}${DIM}" "${NC}${BOLD}${1}" "${NC}"
     if [ $# -gt 1 ]; then
         for(( i=2; i<=$#; i++ )); do
-            printf "\n- ${!i}"
+            printf "\n- %s" "${!i}"
         done
     fi
 }
 
 function already_installed {
-    printf "\n\n${BOLD}Already installed:${NC}\n"
-    cat $MARKER_DIRECTORY/$1
+    printf "\n\n%sAlready installed:%s\n" "${BOLD}" "${NC}"
+    cat "$MARKER_DIRECTORY/$1"
 }
 
 function finish_install {
     MARKER_FILE=$MARKER_DIRECTORY/$1
-    date > $MARKER_FILE
+    date > "$MARKER_FILE"
     if [ $# -gt 1 ]; then
         for(( i=2; i<=$#; i++ )); do
-            printf "${!i}\n" >> $MARKER_FILE
+            printf "%s\n" "${!i}" >> "$MARKER_FILE"
         done
     fi
-    printf "\n${BOLD}Installation finished - ${1}{NC}\n"
+    printf "\n%sInstallation finished - %s\n" "${BOLD}" "${1}${NC}"
 }
 
 function check_status {
@@ -56,34 +56,34 @@ function check_status {
 
     for SCRIPT in "$@"; do
         MARKER_FILE=$MARKER_DIRECTORY/$SCRIPT
-        if [ -f $MARKER_FILE ]; then
+        if [ -f "$MARKER_FILE" ]; then
             INSTALLED+=( "$SCRIPT" )
         else
             NOT_INSTALLED+=( "$SCRIPT" )
         fi
     done
 
-    if [ ! -z "${NOT_INSTALLED}" ]; then
-        printf "\n${BOLD}Will be installed:${NC}"
-        for SCRIPT in ${NOT_INSTALLED[@]}; do
+    if [[ ${#NOT_INSTALLED[@]} -gt 0 ]]; then
+        printf "\n%sWill be installed:%s" "${BOLD}" "${NC}"
+        for SCRIPT in "${NOT_INSTALLED[@]}"; do
             printf "\n-$SCRIPT"
         done
 
         printf "\n"
     fi
 
-    if [ ! -z "${INSTALLED}" ]; then
-        printf "\n${BOLD}Already installed:${NC}"
-        for SCRIPT in ${INSTALLED[@]}; do
-            printf "\n-$SCRIPT"
+    if [[ ${#INSTALLED[@]} -gt 0 ]]; then
+        printf "\n%sAlready installed:%s" "${BOLD}" "${NC}"
+        for SCRIPT in "${INSTALLED[@]}"; do
+            printf "\n-%s" "$SCRIPT"
         done
         printf "\n"
     fi
 
     printf "\n"
 
-    if [ -z "${NOT_INSTALLED}" ]; then
-        printf "\nNreothing to do here...\n"
+    if [[ ${#NOT_INSTALLED[@]} -eq 0 ]]; then
+        printf "\nNothing to do here...\n"
         exit 0
     fi
 
