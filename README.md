@@ -1,6 +1,6 @@
-# Idempotent Ubuntu Setup for 18.04 / amd64
+# Idempotent Ubuntu Setup for 20.04 / amd64
 
-A collection of (more or less) idempotent shell scripts for easy setting up a dev machine.
+A collection of (more or less) idempotent shell scripts for easy setting up a dev machine on 20.04.
 Theses scripts fulfill our needs, YMMV.
 They come with no warranties attached.
 
