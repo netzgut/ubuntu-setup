@@ -18,7 +18,7 @@ sudo apt-get update \
 
 echo "Setting up needed directories"
 
-mkdir -p $MARKER_DIRECTORY
-mkdir -p $BIN_DIRECTORY
+mkdir -p "$MARKER_DIRECTORY"
+mkdir -p "$BIN_DIRECTORY"
 
 echo "Finished installing basics"
