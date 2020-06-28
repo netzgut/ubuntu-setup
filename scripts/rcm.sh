@@ -22,7 +22,8 @@ NAME="RCM"
 print_banner "$NAME" "DOTFILES_REPO=$DOTFILES_REPO"
 
 if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
-    sudo add-apt-repository -y ppa:martin-frost/thoughtbot-rcm \
+    sudo add-apt-repository universe \
+    && sudo add-apt-repository multiverse \
     && sudo apt-get update \
     && sudo apt-get install -y rcm \
     && git clone "$DOTFILES_REPO" "$HOME"/.dotfiles \
