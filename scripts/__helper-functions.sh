@@ -8,24 +8,24 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 function print_error {
-    printf "%s%s%s\n" "${RED}" "${1}" "${NC}"
+    echo -e "${RED}${BOLD}${1}${NC}"
 }
 
 # $1 = NAME
 # $2 = DESCRIPTION
 # $n = additional parameters
 function print_banner {
-    printf "\n\n"
-    printf "%s[%sInstalling %s]%s" "${BOLD}" "${NC}${DIM}" "${NC}${BOLD}${1}" "${NC}"
+    echo -e "\n"
+    echo -e "${BOLD}[${NC}${DIM}Installing ${NC}${BOLD}${1}]${NC}"
     if [ $# -gt 1 ]; then
         for(( i=2; i<=$#; i++ )); do
-            printf "\n- %s" "${!i}"
+            echo "- ${!i}"
         done
     fi
 }
 
 function already_installed {
-    printf "\n\n%sAlready installed:%s\n" "${BOLD}" "${NC}"
+    echo -e "\n\n${BOLD}Already installed:${NC}"
     cat "$MARKER_DIRECTORY/$1"
 }
 
@@ -34,22 +34,22 @@ function finish_install {
     date > "$MARKER_FILE"
     if [ $# -gt 1 ]; then
         for(( i=2; i<=$#; i++ )); do
-            printf "%s\n" "${!i}" >> "$MARKER_FILE"
+            echo -ne "${!i}" >> "$MARKER_FILE"
         done
     fi
-    printf "\n%sInstallation finished - %s\n" "${BOLD}" "${1}${NC}"
+    echo -e "\n${BOLD}Installation finished - ${1}${NC}"
 }
 
 function check_status {
-    printf "\n\n"
-    printf "  _    _ _                 _           __  ___   ___  _  _      _____      _               \n"
-    printf " | |  | | |               | |         /_ |/ _ \ / _ \| || |    / ____|    | |              \n"
-    printf " | |  | | |__  _   _ _ __ | |_ _   _   | | (_) | | | | || |_  | (___   ___| |_ _   _ _ __  \n"
-    printf " | |  | | '_ \| | | | '_ \| __| | | |  | |> _ <| | | |__   _|  \___ \ / _ \ __| | | | '_ \ \n"
-    printf " | |__| | |_) | |_| | | | | |_| |_| |  | | (_) | |_| |  | |    ____) |  __/ |_| |_| | |_) |\n"
-    printf "  \____/|_.__/ \__,_|_| |_|\__|\__,_|  |_|\___(_)___/   |_|   |_____/ \___|\__|\__,_| .__/ \n"
-    printf "                                                                                    | |    \n"
-    printf "                                                                                    |_|    "
+    echo -e "\n"
+    echo "  _    _ _                 _           __  ___   ___  _  _      _____      _               "
+    echo " | |  | | |               | |         /_ |/ _ \ / _ \| || |    / ____|    | |              "
+    echo " | |  | | |__  _   _ _ __ | |_ _   _   | | (_) | | | | || |_  | (___   ___| |_ _   _ _ __  "
+    echo " | |  | | '_ \| | | | '_ \| __| | | |  | |> _ <| | | |__   _|  \___ \ / _ \ __| | | | '_ \ "
+    echo " | |__| | |_) | |_| | | | | |_| |_| |  | | (_) | |_| |  | |    ____) |  __/ |_| |_| | |_) |"
+    echo "  \____/|_.__/ \__,_|_| |_|\__|\__,_|  |_|\___(_)___/   |_|   |_____/ \___|\__|\__,_| .__/ "
+    echo "                                                                                    | |    "
+    echo "                                                                                    |_|    "
 
     INSTALLED=()
     NOT_INSTALLED=()
@@ -64,26 +64,22 @@ function check_status {
     done
 
     if [[ ${#NOT_INSTALLED[@]} -gt 0 ]]; then
-        printf "\n%sWill be installed:%s" "${BOLD}" "${NC}"
+        echo -e "\n${BOLD}Will be installed:${NC}"
         for SCRIPT in "${NOT_INSTALLED[@]}"; do
-            printf "\n-$SCRIPT"
+            echo -e "- $SCRIPT"
         done
-
-        printf "\n"
+        echo ""
     fi
 
     if [[ ${#INSTALLED[@]} -gt 0 ]]; then
-        printf "\n%sAlready installed:%s" "${BOLD}" "${NC}"
+        echo -e "\n${BOLD}Already installed:${NC}"
         for SCRIPT in "${INSTALLED[@]}"; do
-            printf "\n-%s" "$SCRIPT"
+            echo "- $SCRIPT"
         done
-        printf "\n"
     fi
 
-    printf "\n"
-
     if [[ ${#NOT_INSTALLED[@]} -eq 0 ]]; then
-        printf "\nNothing to do here...\n"
+        echo -e "\nNothing to do here..."
         exit 0
     fi
 
