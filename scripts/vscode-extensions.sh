@@ -26,7 +26,7 @@ if [ ! -f "$MARKER_DIRECTORY"/"$MARKER" ]; then
     && code --install-extension eamodio.gitlens \
     && code --install-extension esbenp.prettier-vscode \
     && code --install-extension flowtype.flow-for-vscode \
-    && code --install-extension ms-vscode.Go \
+    && code --install-extension golang.go \
     && code --install-extension msjsdiag.debugger-for-chrome \
     && code --install-extension rust-lang.rust \
     && code --install-extension vscode-icons-team.vscode-icons \
