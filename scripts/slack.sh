@@ -15,12 +15,12 @@ NAME="Slack"
 ###############################################################################
 
 # SLACK_VERSION
-[ -z "$SLACK_VERSION" ] && SLACK_VERSION="4.17.0"
+[ -z "$SLACK_VERSION" ] && SLACK_VERSION="4.20.0"
 
 ###############################################################################
 
 SLACK_TEMP_FILE="$(mktemp -u).deb"
-SLACK_URL=https://downloads.slack-edge.com/linux_releases/slack-desktop-$SLACK_VERSION-amd64.deb
+SLACK_URL="https://downloads.slack-edge.com/releases/linux/${SLACK_VERSION}/prod/x64/slack-desktop-${SLACK_VERSION}-amd64.deb"
 
 ###############################################################################
 
