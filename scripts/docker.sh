@@ -15,7 +15,7 @@ NAME="Docker"
 ###############################################################################
 
 # DOCKER_COMPOSE_VERSION
-[ -z "${DOCKER_COMPOSE_VERSION}" ] && DOCKER_COMPOSE_VERSION="1.26.2"
+[ -z "${DOCKER_COMPOSE_VERSION}" ] && DOCKER_COMPOSE_VERSION="1.29.2"
 
 ###############################################################################
 
