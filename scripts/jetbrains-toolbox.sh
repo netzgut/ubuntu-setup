@@ -15,7 +15,7 @@ NAME="JetBrains Toolbox"
 ###############################################################################
 
 # JETBRAINS_TOOLBOX_VERSION
-[ -z "${JETBRAINS_TOOLBOX_VERSION}" ] && JETBRAINS_TOOLBOX_VERSION="1.20.8804"
+[ -z "${JETBRAINS_TOOLBOX_VERSION}" ] && JETBRAINS_TOOLBOX_VERSION="1.21.9712"
 
 ###############################################################################
 
